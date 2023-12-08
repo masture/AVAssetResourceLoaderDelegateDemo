@@ -16,6 +16,7 @@
 		0C2E87CC2B22073800F52640 /* URL + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2E87CB2B22073800F52640 /* URL + Extension.swift */; };
 		0C2E87CE2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2E87CD2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift */; };
 		0C2E87D02B22EA4D00F52640 /* ViewController + setupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2E87CF2B22EA4D00F52640 /* ViewController + setupUI.swift */; };
+		0C2E87D22B23289200F52640 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C2E87D12B23289200F52640 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0C2E87CB2B22073800F52640 /* URL + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extension.swift"; sourceTree = "<group>"; };
 		0C2E87CD2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + AVAssetResourceLoaderDelegate.swift"; sourceTree = "<group>"; };
 		0C2E87CF2B22EA4D00F52640 /* ViewController + setupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + setupUI.swift"; sourceTree = "<group>"; };
+		0C2E87D12B23289200F52640 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		0C2A1B632B10BC0F006B24AD = {
 			isa = PBXGroup;
 			children = (
+				0C2E87D12B23289200F52640 /* README.md */,
 				0C2A1B6E2B10BC0F006B24AD /* AVAssetResourceLoader */,
 				0C2A1B6D2B10BC0F006B24AD /* Products */,
 			);
@@ -136,6 +139,7 @@
 			files = (
 				0C2A1B7C2B10BC12006B24AD /* LaunchScreen.storyboard in Resources */,
 				0C2A1B792B10BC12006B24AD /* Assets.xcassets in Resources */,
+				0C2E87D22B23289200F52640 /* README.md in Resources */,
 				0C2A1B772B10BC0F006B24AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

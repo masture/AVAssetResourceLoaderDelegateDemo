@@ -31,7 +31,9 @@ extension ViewController {
             guard let self else { return }
             playerLayer.frame = CGRect(origin: .zero, size: aView.bounds.size)
             aView.layer.addSublayer(playerLayer)
-            player.automaticallyWaitsToMinimizeStalling = false
+//            if isCustomScheme {
+//                player.automaticallyWaitsToMinimizeStalling = false
+//            }
             player.play()
         }
         let playButton = UIButton(primaryAction: action)
