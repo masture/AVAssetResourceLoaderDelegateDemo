@@ -10,68 +10,41 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    let aView = UIView()
+    // MARK: - Configure to use custom URL or HTTPS scheme
+    /// When `isCustomScheme` is true, the resource url uses the custom scheme and then only
+    /// the AVAssetResourceLoaderDelegate will come into picture.
+    /// If `isCustomScheme` is false then it uses HTTPS scheme and AVPlayer will load the resource itself.
+    let isCustomScheme = true
+    
+    var scheme: String {
+        isCustomScheme ? customScheme : httpsScheme
+    }
+    let httpsScheme = "https"
+    let customScheme = "customhttps"
+    
+    // Variable held though out the life cycle of the ViewController
+    var session = URLSession.shared
+    var receivedLoadingRequests: [String:AVAssetResourceLoadingRequest] = [:]
+    
+//    let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/adv_dv_atmos/main.m3u8")!
     let url = URL(string: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8")!
-    lazy var urlAsset: AVAsset = {
-        let asset = AVURLAsset(url: url)
+    
+    lazy var urlAsset: AVURLAsset = {
+        let customURL = url.withScheme(scheme)!
+        let asset = AVURLAsset(url: customURL)
         asset.resourceLoader.setDelegate(self, queue: .main)
+        print("Set the resource loader delegate.")
         return asset
     }()
+    
     lazy var item = AVPlayerItem(asset: urlAsset)
     lazy var player = AVPlayer(playerItem: item)
-//    lazy var player = AVPlayer(url: url)
     lazy var playerLayer = AVPlayerLayer(player: player)
-    
-    override func loadView() {
-        super.loadView()
-        setupUI()
-    }
-    
-    func setupUI() {
-        
-        
-        aView.translatesAutoresizingMaskIntoConstraints = false
-        aView.backgroundColor = .systemGray
-        view.addSubview(aView)
-        NSLayoutConstraint.activate([
-            aView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 44),
-            aView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            aView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            aView.heightAnchor.constraint(equalTo: aView.widthAnchor, multiplier: 1080.0/1920.0 )
-        ])
-        let action = UIAction(title: "Play") { [weak self] action in
-            guard let self else { return }
-            playerLayer.frame = CGRect(origin: .zero, size: aView.bounds.size)
-            aView.layer.addSublayer(playerLayer)
-            
-            player.play()
-        }
-        let playButton = UIButton(primaryAction: action)
-        playButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(playButton)
-        NSLayoutConstraint.activate([
-            playButton.topAnchor.constraint(equalTo: aView.bottomAnchor, constant: 16),
-            playButton.heightAnchor.constraint(equalToConstant: 44),
-            playButton.centerXAnchor.constraint(equalTo: aView.centerXAnchor)
-        ])
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        title = "AVAssetResourceLoader"
-        
     }
 
 }
 
-// MARK: - AVAssetResourceLoaderDelegate
-
-extension ViewController: AVAssetResourceLoaderDelegate {
-//    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForResponseTo authenticationChallenge: URLAuthenticationChallenge) -> Bool {
-//        print("")
-//        return true
-//    }
-    
-}
