@@ -17,6 +17,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
             print("Loading request without path: \(loadingRequest)")
             return false
         }
+        print("Requested length: \(loadingRequest.request)")
         print("Should wait for loading request: \(path)")
         print("Loading request headers: \(loadingRequest.request.allHTTPHeaderFields ?? [:])")
         
@@ -49,7 +50,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
         }
         var urlRequest = loadingRequest.request // URLRequest(url: httpPlayerUrl!)
         urlRequest.url = httpPlayerUrl
-        print("URL request headers: \(urlRequest.allHTTPHeaderFields)")
+        print("URL request headers: \(urlRequest.allHTTPHeaderFields ?? [:])")
         session.dataTask(with: urlRequest) { [path] data, response, error in
             
             guard let loadingRequest = self.receivedLoadingRequests[path] else {
@@ -76,17 +77,15 @@ extension ViewController: AVAssetResourceLoaderDelegate {
                 return
             }
             print("HTTP Response code: \(httpResponse.statusCode), data: \(data.count)")
-            if var contentInfoRequest = loadingRequest.contentInformationRequest {
-                if let contentLength = self.getContentLength(fromResponse: httpResponse) {
-                    contentInfoRequest.contentLength = contentLength
-                } else {
-                    contentInfoRequest.contentLength = Int64(data.count)
-                }
-                contentInfoRequest.contentType = self.getContentType(fromResponse: httpResponse)
+            print("URL Response expected content length: \(response?.expectedContentLength ?? -1)")
+            print("URL Response mimeType: \(response?.mimeType ?? "missing")")
+            if let contentInfoRequest = loadingRequest.contentInformationRequest {
+                contentInfoRequest.contentLength = response?.expectedContentLength ?? Int64(data.count)
+                contentInfoRequest.contentType = response?.mimeType
                 contentInfoRequest.isByteRangeAccessSupported = true
+                print("contentInfoRequest: \(contentInfoRequest.isByteRangeAccessSupported), \(contentInfoRequest.contentType ?? "contentType missing"), \(contentInfoRequest.contentLength) ")
             }
-            
-            if var dataRequest = loadingRequest.dataRequest {
+            if let dataRequest = loadingRequest.dataRequest {
                 dataRequest.respond(with: data)
             }
             if !(loadingRequest.isCancelled == true) {
@@ -101,7 +100,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
         var contentType: String?
         let headers = response.allHeaderFields
         defer {
-            print("contentType: \(contentType)")
+            print("contentType: \(contentType ?? "missing")")
         }
         if let receivedContentType = headers["Content-Type"] as? String {
             contentType = receivedContentType
@@ -113,7 +112,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
         let headers = response.allHeaderFields
         var contentLength: Int64?
         defer {
-            print("contentLength: \(contentLength)")
+            print("contentLength: \(contentLength ?? -1)")
         }
         if let receivedContentLength = headers["Content-Length"] as? Int64 {
             contentLength = receivedContentLength

@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     var session = URLSession.shared
     var receivedLoadingRequests: [String:AVAssetResourceLoadingRequest] = [:]
     
-    let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/adv_dv_atmos/main.m3u8")!
-//    let url = URL(string: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8")!
+//    let url = URL(string: "https://devstreaming-cdn.apple.com/videos/streaming/examples/adv_dv_atmos/main.m3u8")!
+    let url = URL(string: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8")!
     
     lazy var urlAsset: AVURLAsset = {
         let customURL = url.withScheme(scheme)!

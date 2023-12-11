@@ -42,6 +42,7 @@ extension ViewController {
     
     override func viewDidLayoutSubviews() {
         //        playerLayer.removeFromSuperlayer()
+        playerLayer.backgroundColor = UIColor.systemGreen.cgColor
         playerLayer.frame = CGRect(origin: .zero, size: aView.bounds.size)
         aView.layer.addSublayer(playerLayer)
     }
