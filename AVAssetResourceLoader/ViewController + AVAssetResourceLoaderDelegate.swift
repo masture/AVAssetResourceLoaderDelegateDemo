@@ -18,6 +18,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
             return false
         }
         print("Should wait for loading request: \(path)")
+        print("Loading request headers: \(loadingRequest.request.allHTTPHeaderFields ?? [:])")
         
         receivedLoadingRequests[path] = loadingRequest
         let isContentRequest = loadingRequest.contentInformationRequest != nil
@@ -48,7 +49,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
         }
         var urlRequest = loadingRequest.request // URLRequest(url: httpPlayerUrl!)
         urlRequest.url = httpPlayerUrl
-        
+        print("URL request headers: \(urlRequest.allHTTPHeaderFields)")
         session.dataTask(with: urlRequest) { [path] data, response, error in
             
             guard let loadingRequest = self.receivedLoadingRequests[path] else {

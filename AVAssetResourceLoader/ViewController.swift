@@ -10,7 +10,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    // MARK: - Configure to use custom URL or HTTPS scheme
+    // MARK: - Configure to use custom URL scheme or HTTPS scheme
     /// When `isCustomScheme` is true, the resource url uses the custom scheme and then only
     /// the AVAssetResourceLoaderDelegate will come into picture.
     /// If `isCustomScheme` is false then it uses HTTPS scheme and AVPlayer will load the resource itself.
@@ -41,6 +41,8 @@ class ViewController: UIViewController {
     lazy var player = AVPlayer(playerItem: item)
     lazy var playerLayer = AVPlayerLayer(player: player)
 
+    let aView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

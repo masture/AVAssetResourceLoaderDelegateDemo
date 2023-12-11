@@ -17,6 +17,7 @@
 		0C2E87CE2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2E87CD2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift */; };
 		0C2E87D02B22EA4D00F52640 /* ViewController + setupUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2E87CF2B22EA4D00F52640 /* ViewController + setupUI.swift */; };
 		0C2E87D22B23289200F52640 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0C2E87D12B23289200F52640 /* README.md */; };
+		0CA6C6162B26BE6C003641D0 /* ViewController + UserInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA6C6152B26BE6C003641D0 /* ViewController + UserInteractions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0C2E87CD2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + AVAssetResourceLoaderDelegate.swift"; sourceTree = "<group>"; };
 		0C2E87CF2B22EA4D00F52640 /* ViewController + setupUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + setupUI.swift"; sourceTree = "<group>"; };
 		0C2E87D12B23289200F52640 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0CA6C6152B26BE6C003641D0 /* ViewController + UserInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + UserInteractions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				0C2A1B712B10BC0F006B24AD /* SceneDelegate.swift */,
 				0C2A1B732B10BC0F006B24AD /* ViewController.swift */,
 				0C2E87CF2B22EA4D00F52640 /* ViewController + setupUI.swift */,
+				0CA6C6152B26BE6C003641D0 /* ViewController + UserInteractions.swift */,
 				0C2E87CD2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift */,
 				0C2E87CB2B22073800F52640 /* URL + Extension.swift */,
 				0C2A1B752B10BC0F006B24AD /* Main.storyboard */,
@@ -157,6 +160,7 @@
 				0C2A1B722B10BC0F006B24AD /* SceneDelegate.swift in Sources */,
 				0C2E87CE2B22E83C00F52640 /* ViewController + AVAssetResourceLoaderDelegate.swift in Sources */,
 				0C2E87CC2B22073800F52640 /* URL + Extension.swift in Sources */,
+				0CA6C6162B26BE6C003641D0 /* ViewController + UserInteractions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
