@@ -20,6 +20,7 @@ extension ViewController: AVAssetResourceLoaderDelegate {
         print("Requested length: \(loadingRequest.request)")
         print("Should wait for loading request: \(path)")
         print("Loading request headers: \(loadingRequest.request.allHTTPHeaderFields ?? [:])")
+        print("Data request current offset: \(loadingRequest.dataRequest?.currentOffset), requested offset: \(loadingRequest.dataRequest?.requestedOffset), requested length: \(loadingRequest.dataRequest?.requestedLength)")
         
         receivedLoadingRequests[path] = loadingRequest
         let isContentRequest = loadingRequest.contentInformationRequest != nil
@@ -84,6 +85,11 @@ extension ViewController: AVAssetResourceLoaderDelegate {
                 contentInfoRequest.contentType = response?.mimeType
                 contentInfoRequest.isByteRangeAccessSupported = true
                 print("contentInfoRequest: \(contentInfoRequest.isByteRangeAccessSupported), \(contentInfoRequest.contentType ?? "contentType missing"), \(contentInfoRequest.contentLength) ")
+                if contentInfoRequest.contentType == "application/octet-stream" {
+//                    contentInfoRequest.contentType = "video/mp2t"
+//                    contentInfoRequest.contentType = "audio/mpeg"
+                    contentInfoRequest.contentType = "video/mp4"
+                }
             }
             if let dataRequest = loadingRequest.dataRequest {
                 dataRequest.respond(with: data)
